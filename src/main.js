@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. Инициализация Lenis (Плавный скролл)
     const lenis = new Lenis({
         duration: 1.2,
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- РЕФАКТОРИНГ: СЕКЦИЯ ПЛАТФОРМЫ (forEach) ---
         // Теперь каждая карточка анимируется независимо при скролле
         const platformCards = gsap.utils.toArray('.platform__card');
-        
+
         platformCards.forEach((card, index) => {
             gsap.from(card, {
                 scrollTrigger: {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.8,
                 ease: 'power3.out',
                 // Небольшая задержка, если карточки стоят в ряд и появляются одновременно
-                delay: (index % 3) * 0.1 
+                delay: (index % 3) * 0.1
             });
         });
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Неверный ответ на капчу!');
                 return;
             }
-            
+
             const btn = contactForm.querySelector('button');
             btn.disabled = true;
             btn.innerText = 'Отправка...';
@@ -138,4 +138,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+    // --- ЛОГИКА COOKIE POPUP ---
+const initCookiePopup = () => {
+  const popup = document.getElementById('cookie-popup');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const cookieKey = 'orbit_beam_cookie_accepted';
+
+  // Проверяем, принимал ли пользователь куки ранее
+  if (!localStorage.getItem(cookieKey)) {
+      // Показываем попап
+      popup.classList.add('cookie-popup--visible');
+
+      // Анимация появления (GSAP)
+      gsap.to(popup, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+          delay: 1.5 // Показываем через 1.5 секунды после загрузки
+      });
+
+      // Обработка клика
+      acceptBtn.addEventListener('click', () => {
+          // Анимация исчезновения
+          gsap.to(popup, {
+              y: 50,
+              opacity: 0,
+              duration: 0.4,
+              ease: "power2.in",
+              onComplete: () => {
+                  popup.classList.remove('cookie-popup--visible');
+                  // Сохраняем выбор в браузере
+                  localStorage.setItem(cookieKey, 'true');
+              }
+          });
+      });
+  }
+};
+
+// Вызови эту функцию внутри своего DOMContentLoaded
+initCookiePopup();
 });

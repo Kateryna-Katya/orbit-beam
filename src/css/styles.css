@@ -564,3 +564,95 @@ a {
     /* Меняем цвет на синий при наведении */
     color: var(--color-white);
 }
+/* --- COOKIE POPUP (Neo-Brutalism) --- */
+.cookie-popup {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9999;
+  max-width: 380px;
+  background-color: var(--color-white);
+  padding: 25px;
+  display: none; /* Скрыт по умолчанию, показывается через JS */
+  flex-direction: column;
+  gap: 15px;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* Состояние при активации (анимируется через GSAP) */
+.cookie-popup--visible {
+  display: flex;
+}
+
+.cookie-popup p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.cookie-popup p a {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.cookie-popup p a:hover {
+  color: var(--color-accent);
+}
+
+.cookie-popup .btn {
+  align-self: flex-start;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 480px) {
+  .cookie-popup {
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      max-width: none;
+  }
+}
+.pages {
+  padding: 160px 0 100px;
+  background-color: var(--color-bg);
+}
+
+.pages h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 3.5rem);
+  margin-bottom: 40px;
+  background: var(--color-main); /* Желтый акцент */
+  display: inline-block;
+  padding: 10px 20px;
+  border: var(--border-width) solid var(--color-dark);
+  box-shadow: 8px 8px 0px var(--color-dark);
+}
+
+.pages h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: var(--color-accent); /* Синий акцент */
+}
+
+.pages p, .pages li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 850px;
+}
+
+.pages ul {
+  margin-left: 20px;
+  list-style: none;
+}
+
+.pages li::before {
+  content: "→";
+  margin-right: 10px;
+  font-weight: bold;
+  color: var(--color-dark);
+}
