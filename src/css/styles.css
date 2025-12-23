@@ -463,3 +463,19 @@ a {
         grid-template-columns: 1fr;
     }
 }
+/* УДАЛИ ЭТИ СТРОКИ, ЕСЛИ ОНИ ЕСТЬ:
+.platform__card { opacity: 0; transform: translateY(100px); }
+.hero__btns .btn { opacity: 0; }
+*/
+
+/* Оставь только это для плавности */
+.platform__card,
+.benefit-item,
+.blog-card,
+.hero__btns .btn {
+    will-change: transform, opacity;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
