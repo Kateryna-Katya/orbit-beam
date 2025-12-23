@@ -4,4 +4,4 @@
                     <button id="accept-cookies" class="btn btn--main">Принять</button>
                 </div>
             `);const c=document.getElementById("accept-cookies");c&&c.addEventListener("click",()=>{const n=document.getElementById("cookie-popup");n&&n.remove(),localStorage.setItem("cookies-accepted","true")})}})(),typeof lucide<"u"&&lucide.createIcons(),(()=>{const o=document.getElementById("cookie-popup"),c=document.getElementById("accept-cookies"),n="orbit_beam_cookie_accepted";localStorage.getItem(n)||(o.classList.add("cookie-popup--visible"),gsap.to(o,{y:0,opacity:1,duration:.6,ease:"back.out(1.7)",delay:1.5}),c.addEventListener("click",()=>{gsap.to(o,{y:50,opacity:0,duration:.4,ease:"power2.in",onComplete:()=>{o.classList.remove("cookie-popup--visible"),localStorage.setItem(n,"true")}})}))})()});
-//# sourceMappingURL=main-2CqngCyn.js.map
+//# sourceMappingURL=main-C7AQLmhY.js.map
