@@ -479,3 +479,88 @@ a {
 .no-scroll {
     overflow: hidden;
 }
+/* --- СТИЛИЗАЦИЯ КАРТИНКИ В БЕНЕФИТАХ (Neo-Brutalism) --- */
+
+/* 1. Контейнер картинки */
+.benefits__image.card-neo {
+    /* Убираем стандартный padding карточки, чтобы фото касалось границ */
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    /* Чтобы зум картинки не вылезал за рамки */
+
+    /* Задаем высоту, чтобы блок был сопоставим с текстовым блоком слева */
+    min-height: 400px;
+    height: 100%;
+
+    /* Убедимся, что рамка и тень поверх картинки */
+    border: var(--border-width) solid var(--color-dark);
+    box-shadow: var(--shadow-main);
+    background: var(--color-dark);
+    /* Фон на случай, если картинка не прогрузится */
+}
+
+/* 2. Само изображение */
+.benefits__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Заполняет весь блок, обрезая лишнее */
+    display: block;
+    /* Убирает технический отступ снизу */
+
+    /* Эффект Neo-Brutalism: высокий контраст и ЧБ по умолчанию */
+    filter: grayscale(100%) contrast(110%) brightness(0.9);
+
+    /* Плавный переход для ховера */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover-эффект для изображения */
+.benefits__image:hover img {
+    /* Возвращаем цвет и нормальный контраст */
+    filter: grayscale(0%) contrast(100%) brightness(1);
+    /* Легкий зум */
+    transform: scale(1.05);
+}
+
+/* 3. Лейбл "Innovation 2025" */
+.image-label {
+    position: absolute;
+    bottom: 30px;
+    right: -10px;
+    /* Немного вылезает за край для динамики */
+
+    /* Типографика */
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* Цвета и фон (Кислотный желтый) */
+    background-color: var(--color-main);
+    /* Используем твою переменную #E2FF00 */
+    color: var(--color-dark);
+
+    /* Брутальная рамка и тень */
+    padding: 12px 24px;
+    border: 3px solid var(--color-dark);
+    box-shadow: 6px 6px 0px var(--color-dark);
+
+    /* Небрежный наклон */
+    transform: rotate(-5deg);
+
+    z-index: 2;
+    /* Поверх картинки */
+    transition: var(--transition);
+}
+
+/* Hover-эффект для лейбла (при наведении на весь блок) */
+.benefits__image:hover .image-label {
+    transform: rotate(0deg) scale(1.1) translate(-10px, -10px);
+    box-shadow: 10px 10px 0px var(--color-dark);
+    background-color: var(--color-accent);
+    /* Меняем цвет на синий при наведении */
+    color: var(--color-white);
+}
